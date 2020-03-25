@@ -42,11 +42,13 @@ app.get('/apps', (req, res) => {
     if(genres) {
         const genre = [ 'Action', 'Puzzle', 'Strategy', 'Casual', 'Arcade', 'Card']
 
-        if(genre.includes(genres)) {
+        if(!genre.includes(genres)) {
+            res.status(400).send('Genre not included, please pick another');
+        } else {
+          
             googleArray = googleArray.filter( item => {
                 return item['Genres'].includes(genres); 
-        })} else {
-            res.status(400).send('Genre not included, please pick another');
+        })
         }
     }
   
