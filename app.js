@@ -1,10 +1,9 @@
-
 const express = require('express');
 const morgan = require('morgan');
 
 const app = express();
 
-app.use(morgan('dev'));
+app.use(morgan('common'));
 
 const google = require('./google-data.js');
 
@@ -57,6 +56,4 @@ app.get('/apps', (req, res) => {
     res.json(googleArray);
 });
   
-app.listen(8000, () => {
-    console.log('Express server is listening on port 8000!');
-  });
+module.exports = app;
